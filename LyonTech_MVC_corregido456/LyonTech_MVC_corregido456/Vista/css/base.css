@@ -1,0 +1,132 @@
+/* ============================================================
+   LYON TECHNOLOGIES · estilo.css — TEMA LION (COMPLETO)
+   Azul noche #081428 · Cian #00c8f5 · Naranja #ff8a1e
+   ============================================================ */
+:root {
+  --bg: #081428;
+  --surface: #0d1f3c;
+  --border: rgba(0, 200, 245, .16);
+  --cyan: #00c8f5;
+  --cyan-dark: #3ddcff;
+  --cyan-soft: rgba(0, 200, 245, .09);
+  --cyan-glow: rgba(0, 200, 245, .32);
+  --orange: #ff8a1e;
+  --orange-strong: #ffa03d;
+  --orange-soft: rgba(255, 138, 30, .12);
+  --orange-glow: rgba(255, 138, 30, .36);
+  --text: #eaf4fc;
+  --text-2: #ffffff;
+  --radius: 14px;
+  --font-main: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+html, body {
+  background:
+    radial-gradient(900px 480px at 85% -10%, rgba(0,200,245,.10), transparent 60%),
+    radial-gradient(800px 460px at -10% 110%, rgba(255,122,0,.10), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  min-height: 100vh;
+}
+.text-muted { color: var(--text-2) !important; }
+::selection { background: var(--cyan); color: #041224; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #14406b; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+a { color: var(--cyan); }
+
+@keyframes ltRebote {
+  0% { transform: translateY(103%); opacity: .35; }
+  60% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+
+/* Intro cinematográfica compartida */
+/* ============ 8 · INTRO CINEMATOGRÁFICA DEL LOGO ============ */
+#ltIntro{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 50% 42%,#0b2244 0%,#030a16 70%)}
+#ltIntro.lti-out{animation:ltiFuera .75s ease forwards}
+@keyframes ltiFuera{to{opacity:0;visibility:hidden}}
+.lti-rays{position:absolute;width:140vmax;height:140vmax;opacity:0;
+  background:repeating-conic-gradient(from 0deg,rgba(0,200,245,.13) 0deg 5deg,transparent 5deg 13deg,rgba(255,138,30,.12) 13deg 18deg,transparent 18deg 28deg);
+  -webkit-mask-image:radial-gradient(circle,transparent 20%,#000 30%,transparent 68%);
+  mask-image:radial-gradient(circle,transparent 20%,#000 30%,transparent 68%);
+  animation:ltiGirar 10s linear infinite,ltiVer .9s ease .45s forwards}
+@keyframes ltiGirar{to{transform:rotate(360deg)}}
+@keyframes ltiVer{to{opacity:1}}
+.lti-logo{position:relative;z-index:4;width:min(240px,58vw);aspect-ratio:1;border-radius:22%;object-fit:cover;
+  animation:ltiEntra 1.05s cubic-bezier(.16,1,.3,1) backwards,ltiNeon 2.4s ease-out .95s backwards,ltiVida 3.2s ease-in-out 2.4s infinite}
+@keyframes ltiEntra{0%{transform:scale(3.2) rotateY(38deg);opacity:0;filter:blur(14px) brightness(2.5)}
+  60%{filter:blur(3px)}100%{transform:scale(1) rotateY(0);opacity:1;filter:blur(0) brightness(1)}}
+@keyframes ltiNeon{0%{box-shadow:0 0 0 rgba(0,200,245,0)}
+  6%{box-shadow:0 0 60px rgba(0,200,245,.95),0 0 120px rgba(255,138,30,.6)}
+  12%{box-shadow:0 0 10px rgba(0,200,245,.25)}
+  22%{box-shadow:0 0 80px rgba(0,200,245,1),0 0 150px rgba(255,138,30,.7)}
+  34%{box-shadow:0 0 24px rgba(0,200,245,.4)}
+  52%{box-shadow:0 0 90px rgba(0,200,245,.9),0 0 160px rgba(255,138,30,.65)}
+  100%{box-shadow:0 0 34px rgba(0,200,245,.55),0 0 70px rgba(255,138,30,.4)}}
+@keyframes ltiVida{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.lti-ring{position:absolute;z-index:3;width:min(240px,58vw);aspect-ratio:1;border-radius:22%;
+  border:3px solid rgba(0,200,245,.85);opacity:0;pointer-events:none;animation:ltiOnda 1.5s ease-out infinite}
+.lti-ring:nth-child(3){animation-delay:1s}
+.lti-ring:nth-child(4){animation-delay:1.35s}
+.lti-ring:nth-child(5){animation-delay:1.7s}
+@keyframes ltiOnda{0%{opacity:.95;transform:scale(1)}100%{opacity:0;transform:scale(2.9);border-color:rgba(255,138,30,.15)}}
+.lti-sparks{position:absolute;inset:0;z-index:2}
+.lti-sparks i{position:absolute;bottom:-12px;width:4px;height:var(--h,10px);border-radius:99px;
+  background:linear-gradient(180deg,#fff,var(--cyan));box-shadow:0 0 8px var(--cyan),0 0 14px var(--orange);
+  opacity:0;animation:ltiChispa 2s ease-in infinite}
+@keyframes ltiChispa{0%{opacity:0;transform:translateY(0) scale(1)}12%{opacity:1}
+  100%{opacity:0;transform:translateY(-78vh) scale(.4)}}
+.lti-word{position:relative;z-index:4;display:flex;flex-wrap:wrap;justify-content:center;gap:.06em;margin:34px 12px 0;
+  font-family:var(--font-display);font-weight:700;font-size:clamp(1.1rem,4.4vw,2rem);letter-spacing:.28em;color:var(--text)}
+.lti-word span{opacity:0;display:inline-block;animation:ltiLetra .5s cubic-bezier(.3,1.4,.5,1) backwards}
+@keyframes ltiLetra{0%{opacity:0;transform:translateY(16px) scale(.6);filter:blur(4px)}
+  100%{opacity:1;transform:none;filter:none;text-shadow:0 0 18px rgba(0,200,245,.8),0 0 34px rgba(255,138,30,.5)}}
+.lti-word span:nth-child(-n+4){color:var(--cyan-dark)}
+.lti-word span:nth-child(n+6){color:var(--orange-strong)}
+.lti-bar{position:relative;z-index:4;margin-top:26px;width:min(300px,70vw);height:5px;border-radius:99px;
+  background:#0a1f3d;border:1px solid var(--border);overflow:hidden}
+.lti-bar i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--cyan),var(--orange));animation:ltiCarga 2.5s ease .3s forwards}
+@keyframes ltiCarga{to{width:100%}}
+.lti-flash{position:absolute;inset:0;z-index:5;background:#fff;opacity:0;pointer-events:none;animation:ltiFlash .5s ease 2.55s}
+@keyframes ltiFlash{0%{opacity:0}30%{opacity:.85}100%{opacity:0}}
+.logoCircle::before{content:"";position:absolute;inset:0;border-radius:50%;z-index:3;pointer-events:none;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 60%);
+  background-size:280% 100%;mix-blend-mode:screen;animation:ltiBrilloNav 7s ease-in-out 3s infinite}
+@keyframes ltiBrilloNav{0%,80%{background-position:150% 0}95%,100%{background-position:-60% 0}}
+.lt-landing .logo-link{position:relative}
+.lt-landing .logo-link::after{content:"";position:absolute;top:8px;bottom:8px;left:8px;width:62px;border-radius:12px;
+  pointer-events:none;z-index:2;background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.45) 50%,transparent 65%);
+  background-size:300% 100%;mix-blend-mode:screen;animation:ltiBrilloNav 7s ease-in-out 2.4s infinite}
+
+
+/* Accesibilidad y ajustes globales */
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  #ltIntro { display: none !important; }
+  .lt-landing .lt-reveal { opacity: 1 !important; transform: none !important; }
+}
+/* Textos claros y títulos en naranja */
+.text-muted, .lt-mod-txt small, .form-label, .lt-mod-header .lt-mh-txt small, .donut-legend li,
+.lt-toolbar .small, .kb-card small, .promo-card small, .desc-producto { color: #fff !important; }
+.lt-mod-txt strong, #contentArea h4, #contentArea h5, #contentArea h6, #contentArea .kb-head h6,
+.card-producto h6, .promo-head, .site-footer h6 { color: var(--orange) !important; }
+.selected-purchase { border: 3px solid var(--orange) !important; box-shadow: 0 0 0 4px rgba(255,138,30,.18), 0 20px 45px rgba(255,138,30,.22) !important; }
+
+/* Identidad visual solicitada: textos secundarios en blanco y títulos en naranja */
+.lt-landing .section-title,
+.lt-landing .contacto-card h4 {
+  color: var(--orange) !important;
+}
+.lt-landing .section-subtitle,
+.lt-landing .contacto-card p,
+.lt-landing .contacto-card a {
+  color: #fff !important;
+}
