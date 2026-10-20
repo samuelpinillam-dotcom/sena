@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escanear Código QR - Olmes & Asociados</title>
+
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="CSS/escaner_qr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Olmes & Asociados</h1>
+            <p>Sistema Administrador</p>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="administrador.html">Inicio</a></li>
+                <li>
+                    <a href="#" class="activo">Ingreso</a>
+                    <ul class="submenu">
+                        <li><a href="registro_huella.html"><i class="fa-solid fa-fingerprint"></i> Huellero Físico</a></li>
+                        <li><a href="escaner_qr.html"><i class="fa-solid fa-qrcode"></i> Escanear Código QR</a></li>
+                        <li><a href="asistencia_manual.php"><i class="fa-solid fa-keyboard"></i> Registro Digital / Manual</a></li>
+                        <li><a href="enviar_claves_vista.php"><i class="fa-solid fa-envelope-circle-check"></i> Enviar Contraseñas</a></li>
+                    </ul>
+                </li>
+                <li><a href="REGESTU.html">Estudiantes</a></li>
+                <li><a href="CONSULTA.html">Consultar</a></li>
+                <li><a href="actulizar.html">Actualizar</a></li>
+                <li><a href="eliminar.html">Eliminar</a></li>
+                <li><a href="../MODELO/logout_admin.php" style="background-color: #d9534f; color: white; border-radius: 4px;">Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contenido">
+        <div class="scanner-container">
+            <h2><i class="fa-solid fa-qrcode"></i> Escáner de Código QR</h2>
+            <p style="color: #666; margin-bottom: 20px;">Coloque el código QR del estudiante frente a la cámara.</p>
+            
+            <!-- Contenedor de la cámara -->
+            <div id="reader"></div>
+
+            <!-- Tarjeta visual de resultado (Foto, Nombre, Curso y Botón Siguiente) -->
+            <div id="cardResultado" class="card-resultado">
+                <div id="contenidoResultado"></div>
+                <button id="btnSiguiente" class="btn-siguiente" style="display: none;"><i class="fa-solid fa-arrow-right"></i> Siguiente Estudiante</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Olmes & Asociados | Sistema CRUD Empresarial</p>
+    </footer>
+
+    <script src="JS/escaner_qr.js"></script>
+</body>
+</html>

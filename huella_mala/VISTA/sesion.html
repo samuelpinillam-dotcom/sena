@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <!-- Ruta del CSS directa porque ya estamos dentro de la carpeta VISTA -->
+    <link rel="stylesheet" href="CSS/estilo.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Olmes & Asociados</h1>
+            <p>Soluciones Empresariales Profesionales</p>
+        </div>
+        
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="../index.php">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Servicios</a>
+                </li>
+                <li>
+                    <a href="#">Contacto</a>
+                </li>
+                <li>
+                    <a href="sesion.html" class="activo">Sesión</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contenido">
+        <div class="login">
+            <h2>Iniciar Sesión</h2>
+
+  <form action="../CONTROLADOR/uno.php" method="POST">
+    <input type="text" placeholder="Usuario o Correo" name="usu" required>
+    <input type="password" placeholder="Contraseña" name="pass" required>
+    <button type="submit">Ingresar</button>
+</form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Olmes & Asociados | Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>

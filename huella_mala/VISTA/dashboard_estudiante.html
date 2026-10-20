@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Panel - Estudiante | Olmes & Asociados</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>Olmes & Asociados</h1>
+        <p>Portal del Estudiante</p>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li><a href="dashboard_estudiante.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="../MODELO/logout_estudiante.php" style="color: #ff6b6b;"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contenido" style="padding: 20px; max-width: 950px; margin: auto;">
+    
+    <!-- Tarjeta de Bienvenida -->
+    <div style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 25px; border-radius: 12px; border-left: 6px solid #2e7d32; margin-bottom: 25px; box-shadow: 0px 3px 6px rgba(0,0,0,0.08);">
+        <h2 style="color: #1b4d3e; margin-top: 0;">👋 ¡Bienvenido, <span id="txtNombreEstudiante">Cargando...</span>!</h2>
+        <p style="margin: 6px 0; font-size: 15px;">📚 <strong>Curso:</strong> <span id="txtCursoEstudiante">Cargando...</span></p>
+        <p style="margin: 6px 0; font-size: 15px;">✉️️ <strong>Correo institucional:</strong> <span id="txtCorreoEstudiante">Cargando...</span></p>
+    </div>
+
+    <!-- Grid de Secciones -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+        
+        <!-- Menú del Día -->
+        <div style="background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0px 3px 8px rgba(0,0,0,0.1);">
+            <h3 style="color: #1b4d3e; margin-top: 0;"><i class="fa-solid fa-utensils"></i> Menú Escolar de Hoy</h3>
+            <hr style="margin: 12px 0; border: 0; border-top: 1px solid #eee;">
+            <p style="font-size: 16px; margin-bottom: 8px;"><strong>Plato principal:</strong> <span id="txtNomMenu" style="color: #2e7d32; font-weight: bold;">Cargando...</span></p>
+            <p style="font-size: 14px; color: #555;"><strong>Ingredientes / Descripción:</strong> <span id="txtIngreMenu">Cargando...</span></p>
+            <p style="color: #666; font-size: 12px; margin-top: 15px;"><i class="fa-regular fa-clock"></i> Horario de comedor: 12:00 PM - 2:00 PM</p>
+        </div>
+
+        <!-- Tarjeta de Contador de Almuerzos -->
+        <div style="background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0px 3px 8px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: #1b4d3e; margin-top: 0;"><i class="fa-solid fa-clipboard-user"></i> Mis Almuerzos Registrados</h3>
+            <hr style="margin: 12px 0; border: 0; border-top: 1px solid #eee;">
+            <div style="font-size: 45px; font-weight: bold; color: #2e7d32; margin: 10px 0;" id="txtTotalAsistencias">0</div>
+            <p style="font-size: 14px; color: #555; margin: 0;">Veces que has ingresado al comedor escolar con tu huella.</p>
+        </div>
+
+    </div>
+
+    <!-- Historial de Accesos Recientes -->
+    <div style="background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0px 3px 8px rgba(0,0,0,0.1);">
+        <h3 style="color: #1b4d3e; margin-top: 0;"><i class="fa-solid fa-history"></i> Historial Reciente de Ingresos</h3>
+        <hr style="margin: 12px 0; border: 0; border-top: 1px solid #eee;">
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+                <thead>
+                    <tr style="background: #e8f5e9; color: #1b4d3e;">
+                        <th style="padding: 10px; border-bottom: 2px solid #ddd;">ID Registro</th>
+                        <th style="padding: 10px; border-bottom: 2px solid #ddd;">Detalle de Acceso / Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaHistorial">
+                    <tr>
+                        <td colspan="2" style="padding: 12px; text-align: center; color: #666;">Cargando historial...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Olmes & Asociados | Zona de Estudiantes</p>
+</footer>
+
+<!-- Archivo JavaScript externo -->
+<script src="JS/dashboard_estudiante.js"></script>
+
+</body>
+</html>

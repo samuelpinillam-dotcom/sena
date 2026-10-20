@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Asistencia - Olmes & Asociados</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- HEADER -->
+    <header>
+        <div class="logo">
+            <h1>Olmes & Asociados</h1>
+            <p>Sistema Administrador</p>
+        </div>
+
+        <!-- MENU -->
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="administrador.html" class="activo">Inicio</a>
+                </li>
+ <!-- MENÚ INGRESO CON LA NUEVA OPCIÓN -->
+                <li>
+                    <a href="#">Ingreso</a>
+                    <ul class="submenu">
+                        <li><a href="registro_huella.html"><i class="fa-solid fa-fingerprint"></i> Huellero Físico</a></li>
+                        <li><a href="escaner_qr.html"><i class="fa-solid fa-qrcode"></i> Escanear Código QR</a></li>
+                        <li><a href="asistencia_manual.php"><i class="fa-solid fa-keyboard"></i> Registro Digital / Manual</a></li>
+                        <li><a href="enviar_claves_vista.php"><i class="fa-solid fa-envelope-circle-check"></i> Enviar Contraseñas</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Insertar</a>
+                    <ul class="submenu">
+                        <li><a href="REGESTU.html">Estudiantes</a></li>
+                        <li><a href="REGEMENU.html">Menu Escolar</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Consultar</a>
+                    <ul class="submenu">
+                        <li><a href="CONSULTA.html">Estudiantes</a></li>
+                        <li><a href="CONSULTAMENU.html">Menu Escolar</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Actualizar</a>
+                    <ul class="submenu">
+                        <li><a href="actulizar.html">Estudiantes</a></li>
+                        <li><a href="actualizar_menu.html">Menu Escolar</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Eliminar</a>
+                    <ul class="submenu">
+                        <li><a href="eliminar.html">Estudiantes</a></li>
+                        <li><a href="eliminar_menu.html">Menu Escolar</a></li>
+                    </ul>
+                </li>
+
+                <!-- BOTÓN DE CERRAR SESIÓN (Sin icono) -->
+                <li>
+                    <a href="../MODELO/logout_admin.php" style="background-color: #d9534f; color: white; border-radius: 4px;">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+<section class="contenido">
+
+    <div class="login" style="max-width: 500px; margin: 20px auto;">
+
+        <div style="text-align: center; margin-bottom: 15px;">
+            <i class="fa-solid fa-user-plus" style="font-size: 40px; color: #1b4d3e;"></i>
+        </div>
+
+        <h2>Registro Rápido de Estudiante</h2>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
+            Registra al alumno aquí de forma rápida
+        </p>
+
+        <!-- Botón para alternar la visibilidad del formulario -->
+        <div style="text-align: center; margin-bottom: 15px;">
+            <button id="btnToggleForm" type="button" onclick="toggleFormulario()" style="background-color: #1b4d3e; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <i class="fa-solid fa-eye-slash"></i> Ocultar Formulario
+            </button>
+        </div>
+
+        <!-- Contenedor del Formulario para Ocultar/Mostrar -->
+        <div id="seccionFormulario">
+            <!-- Formulario Limpio -->
+            <form id="formRegistroEstudiante" style="margin-bottom: 30px; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <div style="margin-bottom: 10px;">
+                    <label style="font-size: 13px; font-weight: bold;">Nombre del Estudiante:</label>
+                    <input type="text" id="nombreEstudiante" required placeholder="Ej. Juan Pérez" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label style="font-size: 13px; font-weight: bold;">Curso:</label>
+                    <input type="text" id="cursoEstudiante" required placeholder="Ej. 11-01" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 13px; font-weight: bold;">Correo:</label>
+                    <input type="email" id="correoEstudiante" required placeholder="Ej. correo@example.com" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <button type="submit" style="width: 100%; background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar Estudiante en Base de Datos
+                </button>
+                <div id="mensajeRegistroForm" style="text-align: center; margin-top: 10px; font-size: 13px; font-weight: bold;"></div>
+            </form>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+
+        <div style="text-align: center; margin-bottom: 15px;">
+            <i class="fa-solid fa-fingerprint" style="font-size: 50px; color: #1b4d3e;"></i>
+        </div>
+
+        <h2>Control Biométrico de Asistencia</h2>
+
+        <p style="text-align: center; color: #666; margin-bottom: 15px; font-size: 14px;">
+            Conecta el lector y coloca tu dedo en el sensor para marcar asistencia
+        </p>
+
+        <div style="text-align: center;">
+            <button id="conectarBtn" type="button" style="background-color: #1b4d3e; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                <i class="fa-solid fa-plug"></i> Conectar Lector Físico
+            </button>
+        </div>
+
+        <div id="estadoSensor" style="text-align: center; margin-top: 20px; font-weight: bold; color: #d9534f;">
+            Sensor Desconectado
+        </div>
+
+        <div id="tarjetaExito" class="tarjeta-asistencia" style="display: none; margin-top: 20px; background: #e8f5e9; padding: 15px; border-radius: 8px; border: 1px solid #c8e6c9;">
+            <p class="titulo-bienvenida" style="color: #2e7d32; font-weight: bold;">✅ ¡Bienvenido, <span id="txtNombre"></span>!</p>
+            <p>📚 <strong>Curso:</strong> <span id="txtCurso"></span></p>
+            <p>⏰ <strong>Hora:</strong> <span id="txtHora"></span></p>
+            <hr style="border: 0; border-top: 1px solid #c8e6c9;">
+            <p class="mensaje-comedor" style="color: #2e7d32;">🍽️ ¡Sigue a almorzar!</p>
+            
+            <div style="text-align: center; margin-top: 15px;">
+                <button id="btnSiguiente" type="button" style="background-color: #1b4d3e; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold;">
+                    <i class="fa-solid fa-arrow-right"></i> Siguiente Estudiante
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Olmes & Asociados | Todos los derechos reservados</p>
+</footer>
+
+<!-- Código de JavaScript externo -->
+<script src="JS/script.js?v=6.0"></script>
+</body>
+</html>

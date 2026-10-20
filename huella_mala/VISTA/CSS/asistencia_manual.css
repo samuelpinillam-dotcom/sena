@@ -1,0 +1,194 @@
+/* Estilos específicos para el módulo de registro manual */
+.manual-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-registrar {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-registrar:hover {
+    background-color: #1b5e20;
+}
+
+.alerta {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alerta-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alerta-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Contenedor y diseño limpio para el filtro de curso */
+.filtro-curso-card {
+    background: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.filtro-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filtro-grid .form-group {
+    width: 100%;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.filtro-grid label {
+    font-weight: 600;
+    color: #1b4d3e;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.filtro-grid select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.filtro-grid select:focus {
+    border-color: #1b4d3e;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.15);
+}
+
+/* Botón estilizado para Cargar Lista a lo ancho */
+.btn-cargar-lista {
+    background-color: #1b4d3e;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.btn-cargar-lista:hover {
+    background-color: #14382d;
+}
+
+/* Tabla de asistencia por curso y botones de chulito/X */
+.tabla-asistencia {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tabla-asistencia th, .tabla-asistencia td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.tabla-asistencia th {
+    background-color: #1b4d3e;
+    color: white;
+}
+
+.opciones-asistencia {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-check, .btn-x {
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.radio-asistencia {
+    display: none;
+}
+
+.btn-check.activo {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.btn-x.activo {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
