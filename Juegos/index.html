@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Geométrica y Matemática</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- MENÚ PRINCIPAL -->
+    <div id="menu-modos" class="card-container">
+        <button id="btn-audio" onclick="alternarSonido()">🔊</button>
+        <h1>🎮 MathGeo 🚀</h1>
+        <p>¡Elige tu estilo de aventura matemática!</p>
+        <br>
+        <button class="btn" onclick="iniciarModo('suma')">➕ Modo Suma</button><br>
+        <button class="btn" onclick="iniciarModo('resta')">➖ Modo Resta</button><br>
+        <button class="btn" onclick="iniciarModo('multiplicacion')">✖️ Modo Multiplicación</button><br>
+        <button class="btn" onclick="iniciarModo('division')">➗ Modo División</button><br>
+        <button class="btn" onclick="iniciarModo('misterio')">🕵️‍♂️ Modo Misterio</button><br>
+        <button class="btn btn-jefe" onclick="iniciarModo('jefe')">🐉 JEFE FINAL</button>
+    </div>
+
+    <!-- ÁREA DE JUEGO -->
+    <div id="juego-area" class="card-container">
+        <button id="btn-audio-juego" onclick="alternarSonido()">🔊</button>
+        <div id="barra-progreso">Ejercicio <span id="ejercicio-num">1</span> de 10</div>
+        <h3 id="titulo-modo">Modo</h3>
+        
+        <div id="contenedor-problema" style="display:none;">
+            <div id="texto-problema"></div>
+        </div>
+
+        <div id="meta-container">Meta a conseguir <span id="resultado-objetivo">?</span></div>
+        
+        <div id="selector-op-container" class="selector-operador" style="display:none;">
+            <button class="op-btn" onclick="seleccionarOperadorMisterio('+')">+</button>
+            <button class="op-btn" onclick="seleccionarOperadorMisterio('-')">-</button>
+            <button class="op-btn" onclick="seleccionarOperadorMisterio('×')">×</button>
+            <button class="op-btn" onclick="seleccionarOperadorMisterio('÷')">÷</button>
+        </div>
+
+        <div id="ecuacion-container">
+            <div class="slot" id="slot-0" ondragover="permitirSoltar(event)" ondrop="soltarFigura(event, 0)">Vacíame</div>
+            <div class="operador-caja" id="op-simbolo">+</div>
+            <div class="slot" id="slot-1" ondragover="permitirSoltar(event)" ondrop="soltarFigura(event, 1)">Vacíame</div>
+            
+            <div id="input-jefe-wrapper" style="display:none; align-items:center; gap:10px;">
+                <span>=</span>
+                <input type="number" id="input-resultado-usuario" class="input-resultado" placeholder="?">
+            </div>
+        </div>
+
+        <div id="figuras-banco"></div>
+
+        <button class="btn" id="btn-comprobar" onclick="verificarRespuesta()">¡Comprobar! 🎯</button>
+        <button class="btn btn-exito" id="btn-siguiente" onclick="siguienteEjercicio()" style="display:none;">Siguiente ➡️</button>
+        <div id="mensaje"></div>
+        <br>
+        <button class="btn btn-secundario btn-menu-volver" onclick="volverMenu()">🏠 Menú</button>
+    </div>
+
+    <!-- PANTALLA FINAL -->
+    <div id="pantalla-final" class="card-container">
+        <h2>🎉 ¡Superado! 🏆</h2>
+        <p class="texto-destacado">¡Has vencido este desafío con éxito rotundo!</p>
+        <br>
+        <button class="btn" onclick="volverMenu()">Menú Principal</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2b1055, #7597de);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    user-select: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: #fff;
+    text-shadow: 3px 3px 0px #d870ad, 5px 5px 0px rgba(0,0,0,0.3);
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+p { 
+    color: #f0f0f0; 
+    font-size: 1.1rem; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
+}
+
+.texto-destacado {
+    font-size: 18px; 
+    color: #ffeb3b;
+}
+
+.card-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255,255,255,0.3);
+    position: relative;
+}
+
+#juego-area, #pantalla-final { 
+    display: none; 
+}
+
+.btn {
+    background: linear-gradient(to bottom, #ffcc00, #ff9900);
+    color: #fff;
+    border: 3px solid #fff;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: 900;
+    margin: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 0 #cc6600, 0 10px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+.btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 9px 0 #cc6600, 0 14px 20px rgba(0,0,0,0.4); 
+}
+.btn:active { 
+    transform: translateY(3px); 
+    box-shadow: 0 3px 0 #cc6600, 0 5px 10px rgba(0,0,0,0.4); 
+}
+
+.btn-secundario { 
+    background: linear-gradient(to bottom, #6c757d, #343a40); 
+    box-shadow: 0 6px 0 #1d2124, 0 10px 15px rgba(0,0,0,0.3);
+}
+.btn-secundario:hover { 
+    box-shadow: 0 9px 0 #1d2124, 0 14px 20px rgba(0,0,0,0.4); 
+}
+
+.btn-jefe { 
+    background: linear-gradient(to bottom, #ff3366, #cc0033); 
+    box-shadow: 0 6px 0 #800020, 0 10px 15px rgba(0,0,0,0.3);
+}
+.btn-jefe:hover { 
+    box-shadow: 0 9px 0 #800020, 0 14px 20px rgba(0,0,0,0.4); 
+}
+
+.btn-exito {
+    background: linear-gradient(to bottom, #28a745, #1e7e34); 
+    box-shadow: 0 6px 0 #155724, 0 10px 15px rgba(0,0,0,0.3);
+}
+
+.btn-menu-volver {
+    width: 50%; 
+    font-size: 14px; 
+    padding: 10px;
+}
+
+/* Botón de Sonido Flotante */
+#btn-audio {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.3);
+    border: 2px solid #fff;
+    color: white;
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+#btn-audio:hover { 
+    transform: scale(1.1); 
+}
+
+#btn-audio-juego {
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    background: rgba(0,0,0,0.3); 
+    border: 2px solid #fff; 
+    color: white; 
+    font-size: 18px; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    cursor: pointer;
+}
+
+#barra-progreso {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 8px 20px;
+    border-radius: 12px;
+    border: 2px solid rgba(255,255,255,0.2);
+    display: inline-block;
+}
+
+#titulo-modo {
+    margin: 5px 0 10px 0; 
+    color: #ffeb3b; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+#figuras-banco {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    flex-wrap: wrap;
+}
+
+.figura {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #333;
+    border-radius: 16px;
+    cursor: grab;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    border: 3px solid #ff9900;
+    transition: transform 0.2s;
+}
+.figura:hover { 
+    transform: scale(1.1); 
+}
+.icono-fig { 
+    font-size: 24px; 
+    line-height: 1; 
+}
+.valor-dentro {
+    font-size: 12px;
+    font-weight: bold;
+    color: #b35900;
+    background: #fff3e0;
+    padding: 1px 6px;
+    border-radius: 6px;
+    margin-top: 2px;
+}
+
+#ecuacion-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 22px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+.slot {
+    width: 70px;
+    height: 70px;
+    border: 3px dashed rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+    color: #fce4ec;
+    font-weight: bold;
+}
+.operador-caja {
+    font-weight: bold;
+    color: #ffeb3b;
+    font-size: 28px;
+    background: rgba(0, 0, 0, 0.3);
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255, 235, 59, 0.5);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.selector-operador {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.op-btn {
+    background: rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.6);
+    color: white;
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.op-btn.seleccionado {
+    background: #ff9900;
+    border-color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+#texto-problema {
+    font-size: 18px;
+    color: #ffeb3b;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    border: 2px dashed rgba(255, 235, 59, 0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.input-resultado {
+    font-size: 20px;
+    width: 80px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 12px;
+    border: 3px solid #ff9900;
+    background: #203a43;
+    color: white;
+    font-weight: bold;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+#resultado-objetivo {
+    font-size: 24px;
+    color: #ffeb3b;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 18px;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 235, 59, 0.5);
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+#mensaje {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}

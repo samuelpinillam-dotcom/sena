@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>Letraverso · Encuentra las letras. Descifra el misterio.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <div class="brand"><span class="brand-mark">L</span><span>LETRA<span class="accent">VERSO</span><small>ENCUENTRA · DESCIFRA · DESCUBRE</small></span></div>
+      <div class="game-stats" aria-live="polite">
+        <div class="level-badge"><small>NIVEL</small><strong id="levelValue">1</strong></div>
+        <div class="lives-box"><small>VIDAS</small><strong id="livesValue" aria-label="3 vidas">♥ ♥ ♥</strong></div>
+      </div>
+      <button id="resetBtn" class="icon-button" type="button" aria-label="Reiniciar palabra" title="Reiniciar">↻</button>
+    </header>
+
+    <section class="prompt-row">
+      <div>
+        <p class="eyebrow">PISTA DE EXPLORACIÓN</p>
+        <h1>Descifra la palabra oculta</h1>
+        <p class="instruction">Encuentra las letras en el orden correcto entre un mar de distractores.</p>
+      </div>
+      <div class="prompt-tools">
+        <div class="image-hint" aria-live="polite">
+          <img id="hintImage" src="assets/imagenes/palabras/semaforo.svg" alt="Ilustración de la palabra secreta">
+          <div><span class="word-label">PISTA VISUAL</span><strong id="hintImageLabel">Observa la ilustración</strong></div>
+        </div>
+        <div class="word-display" aria-label="Palabra formada">
+          <span class="word-label">PALABRA ENCONTRADA</span>
+          <strong id="wordDisplay">_ _ _ _ _ _ _ _</strong>
+        </div>
+      </div>
+    </section>
+
+    <footer class="game-footer">
+      <span id="feedback" role="status" aria-live="polite">Busca la primera letra y empieza a unir.</span>
+      <button id="nextBtn" class="next-button" type="button" hidden>Siguiente nivel <span>→</span></button>
+    </footer>
+
+    <section class="drawing-area" aria-label="Sopa de letras: encuentra y selecciona las letras">
+      <canvas id="gameCanvas" aria-label="Letras mezcladas para encontrar la palabra"></canvas>
+    </section>
+    <div class="canvas-hint" id="canvasHint">Busca la primera letra; las fichas están mezcladas y no hay caminos dibujados.</div>
+
+  </main>
+  <script src="model.js"></script>
+  <script src="view.js"></script>
+  <script src="controller.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

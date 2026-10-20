@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0b1220;--panel:#111c2e;--line:rgba(148,163,184,.22);--text:#f1f5f9;--muted:#94a3b8;--cyan:#fb923c;--violet:#64748b;--pink:#f472b6;--green:#86efac;--red:#fca5a5}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif}
+body{min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#1e293b 0,transparent 55%),var(--bg);overflow-x:hidden}
+button{font:inherit}
+.game-shell{width:min(1240px,calc(100% - 40px));margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.game-header{height:82px;display:flex;align-items:center;gap:28px;border-bottom:1px solid #ffffff10}
+.brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:800;letter-spacing:.06em;white-space:nowrap}
+.brand-mark{width:39px;height:39px;display:grid;place-items:center;border:1px solid #fb923c88;border-radius:12px;color:var(--cyan);font-size:24px;background:#fb923c0d}
+.accent{color:var(--cyan)}.brand small{display:block;font:9px 'DM Mono',monospace;color:var(--muted);letter-spacing:.17em;margin-top:4px}
+.game-stats{display:flex;align-items:center;gap:12px;margin-left:auto}.level-badge,.lives-box{display:flex;flex-direction:column;gap:4px;min-width:62px}.level-badge small,.lives-box small{font:10px "DM Mono",monospace;letter-spacing:.12em;color:var(--muted)}.level-badge strong{font-size:22px;color:var(--orange);line-height:1}.lives-box strong{font-size:17px;letter-spacing:2px;color:#fb7185;white-space:nowrap}.lives-box strong.no-lives{color:var(--muted)}
+#wordProgress,.word-label,.eyebrow{font-family:'DM Mono',monospace;letter-spacing:.1em}
+#wordProgress{display:block;color:var(--muted);font-size:9px;text-align:right;margin-bottom:8px}
+.progress-track{height:4px;background:#ffffff12;border-radius:5px;overflow:hidden}
+.progress-track span{display:block;width:0;height:100%;background:linear-gradient(90deg,#fb923c,#fbbf24);box-shadow:0 0 12px #fb923c;transition:width .25s}
+.icon-button{width:39px;height:39px;border:1px solid var(--line);border-radius:11px;background:#ffffff07;color:#c7d0ed;font-size:24px;cursor:pointer}
+.icon-button:hover{color:var(--cyan);border-color:#55f4ef88}
+.prompt-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:27px 0 20px}
+.eyebrow{font-size:9px;color:var(--cyan);margin:0 0 9px}
+h1{font-size:clamp(23px,3vw,34px);line-height:1.15;letter-spacing:-.05em;margin:0}
+.instruction{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.65}
+.word-display{padding:13px 17px;border:1px solid var(--line);background:#11182e9c;border-radius:12px;min-width:230px}
+.word-label{display:block;color:var(--muted);font-size:8px;margin-bottom:7px}
+.word-display strong{font:500 16px 'DM Mono',monospace;letter-spacing:.17em;color:var(--cyan);white-space:nowrap}
+.drawing-area{position:relative;flex:1;min-height:470px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 20% 50%,#172033b0,transparent 40%),radial-gradient(ellipse at 80% 40%,#1c2938a0,transparent 50%),#0f172a;box-shadow:0 25px 70px #0003,inset 0 1px #ffffff06}
+.drawing-area:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 70px #05081766}
+canvas{display:block;width:100%;height:100%;min-height:470px;touch-action:manipulation;position:relative;z-index:1;cursor:pointer}
+.canvas-hint{position:absolute;left:18px;bottom:15px;z-index:2;font:9px 'DM Mono',monospace;letter-spacing:.04em;color:#9ba8ca;background:#080d1dcc;border:1px solid #ffffff12;padding:9px 12px;border-radius:8px;pointer-events:none}
+.game-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;padding:12px 0;color:var(--muted);font-size:11px}
+.feedback.success{color:var(--green)}.feedback.error{color:var(--red)}
+.next-button{border:1px solid #55f4ef66;background:#55f4ef12;color:var(--cyan);padding:10px 14px;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer}
+.next-button span{margin-left:12px;font-size:15px}.next-button:hover{background:#55f4ef22}
+[hidden]{display:none!important}
+@media(max-width:700px){
+ .game-shell{width:calc(100% - 24px)}
+ .game-header{height:70px;gap:12px}
+ .brand{font-size:12px;gap:8px}.brand-mark{width:34px;height:34px}
+ .brand small{font-size:8px}
+ .game-stats{gap:8px}.level-badge,.lives-box{min-width:auto}.level-badge strong{font-size:18px}.lives-box strong{font-size:14px;letter-spacing:0}
+ .icon-button{flex:0 0 36px;width:36px;height:36px}
+ .prompt-row{align-items:flex-start;flex-direction:column;gap:14px;padding:22px 0 16px}
+ h1{font-size:25px}.instruction{max-width:440px}
+ .word-display{width:100%;min-width:0;padding:10px 13px}
+ .word-display strong{font-size:15px}
+ .drawing-area{min-height:570px}
+ canvas{min-height:570px}
+ .canvas-hint{left:10px;bottom:10px;right:10px;text-align:center;font-size:8px}
+ .game-footer{align-items:flex-start;flex-direction:column;justify-content:center;padding:14px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Pista visual dinámica de la palabra actual */
+.prompt-tools{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.image-hint{display:flex;align-items:center;gap:12px;min-width:190px;padding:9px 13px;border:1px solid #fb923c45;border-radius:12px;background:linear-gradient(135deg,#1e293bdd,#111c2eaa);box-shadow:0 8px 25px #0002}
+.image-hint img{width:62px;height:62px;object-fit:contain;padding:5px;border-radius:9px;background:#0b1220;border:1px solid #ffffff12}
+.image-hint img.image-missing{opacity:.35}
+.image-hint strong{display:block;font-size:13px;color:var(--text);margin-top:5px}
+.word-display{min-width:230px}
+@media(max-width:700px){.prompt-tools{width:100%;display:grid;grid-template-columns:1fr;gap:10px}.image-hint{min-width:0}.image-hint img{width:54px;height:54px}.word-display{width:100%}}
+
+/* Letraverso: dificultad automática por nivel. */
+.image-hint{min-width:285px;min-height:126px;padding:12px 16px;gap:17px}
+.image-hint img{width:104px;height:104px;flex:0 0 104px;padding:7px;background:#0b1220;border:1px solid #ffffff18;border-radius:14px}
+.image-hint strong{max-width:130px;line-height:1.45}
+.prompt-tools{gap:12px}
+@media(max-width:700px){.game-header{height:auto;min-height:70px;flex-wrap:wrap;padding:10px 0}.progress-area{margin-left:auto}.image-hint{min-height:112px}.image-hint img{width:88px;height:88px;flex-basis:88px}.prompt-tools{grid-template-columns:1fr}.drawing-area,canvas{min-height:600px}}
+
+/* Mejora de accesibilidad visual: pista más grande y fichas legibles */
+.prompt-row{align-items:center;gap:28px}
+.prompt-row>div:first-child{flex:1;min-width:260px}
+.prompt-tools{align-items:stretch;gap:14px}
+.image-hint{min-width:340px;min-height:174px;padding:16px 19px;gap:20px;border-color:#fb923c80;background:linear-gradient(135deg,#17243a 0%,#111c2e 100%);box-shadow:0 12px 30px #0004}
+.image-hint img{width:142px;height:142px;flex:0 0 142px;padding:8px;background:#f8fafc;border:2px solid #fb923c;border-radius:16px;object-fit:contain}
+.image-hint .word-label{font-size:11px;color:#fdba74;line-height:1.5}
+.image-hint strong{font-size:16px;line-height:1.5;max-width:150px;color:#fff}
+.word-display{min-width:220px;display:flex;flex-direction:column;justify-content:center}
+.word-display .word-label{font-size:10px}
+.word-display strong{font-size:18px;letter-spacing:.2em;line-height:1.8}
+.drawing-area{min-height:520px}
+canvas{min-height:520px}
+.canvas-hint{font-size:11px;color:#e2e8f0;background:#050a14ed;border-color:#64748b;padding:10px 14px}
+.game-footer{font-size:13px}
+.next-button{font-size:13px;padding:12px 17px}
+@media(max-width:900px){.prompt-row{align-items:stretch;flex-direction:column}.prompt-tools{justify-content:flex-start}.image-hint{flex:1}.word-display{flex:1}}
+@media(max-width:700px){
+ .image-hint{min-width:0;min-height:136px;padding:12px;gap:14px}
+ .image-hint img{width:108px;height:108px;flex-basis:108px}
+ .image-hint .word-label{font-size:10px}
+ .image-hint strong{font-size:14px}
+ .word-display strong{font-size:16px}
+ .drawing-area,canvas{min-height:600px}
+ .canvas-hint{font-size:10px;line-height:1.5}
+}
+
+/* LetraNauta: pista realmente visible y letras más legibles */
+.image-hint{min-width:390px;min-height:218px;padding:18px 22px;gap:22px;border-width:1.5px}
+.image-hint img{width:184px;height:184px;flex:0 0 184px;padding:10px;background:#fff;border:2px solid #fb923c;border-radius:18px;object-fit:contain}
+.image-hint .word-label{font-size:12px;line-height:1.6}
+.image-hint strong{font-size:17px;line-height:1.55;max-width:155px}
+.prompt-tools{gap:16px}
+.word-display{min-height:150px;padding:18px 20px}
+.word-display .word-label{font-size:11px}
+.word-display strong{font-size:20px;letter-spacing:.22em}
+.drawing-area,canvas{min-height:570px}
+.canvas-hint{font-size:12px;line-height:1.55}
+.feedback{font-size:14px;line-height:1.55}
+@media(max-width:900px){.image-hint{min-width:0;flex:1}.image-hint img{width:160px;height:160px;flex-basis:160px}}
+@media(max-width:700px){
+ .image-hint{min-height:170px;padding:14px;gap:15px}
+ .image-hint img{width:132px;height:132px;flex-basis:132px}
+ .image-hint strong{font-size:15px}
+ .word-display{min-height:100px}
+ .drawing-area,canvas{min-height:650px}
+}
+
+
+/* La instrucción va fuera del tablero: nunca tapa ni toca las fichas. */
+.drawing-area{margin-bottom:0;isolation:isolate}
+.canvas-hint{position:relative;left:auto;right:auto;bottom:auto;z-index:auto;display:block;width:fit-content;max-width:100%;margin:12px 0 0;padding:10px 14px;border:1px solid #334155;border-radius:9px;background:#111c2e;color:#cbd5e1;font:11px/1.6 'DM Mono',monospace;letter-spacing:.015em;pointer-events:auto}
+@media(max-width:700px){.canvas-hint{width:100%;margin-top:10px;padding:11px 13px;font-size:10px;text-align:left}.drawing-area{margin-bottom:0}}
+
+/* Progreso por niveles y vidas, sin barra de progreso superior. */
+.game-stats{flex-shrink:0}.level-badge{padding:7px 10px;border:1px solid #fb923c35;border-radius:10px;background:#fb923c0b}.lives-box{padding:7px 10px;border:1px solid #fb718535;border-radius:10px;background:#fb71850b}
+
+
+/* Letraverso: tablero denso, fichas pequeñas y espacio equilibrado. */
+.brand-mark{color:#fb923c}
+.drawing-area{overflow:hidden}
+canvas{touch-action:manipulation}
+
+/* El mensaje de estado queda antes del tablero para que no se pierda al final de la página. */
+.game-footer{order:3;flex:0 0 auto;min-height:64px;margin:0 0 12px;padding:12px 16px;border:1px solid #ffffff18;border-radius:12px;background:#111c2e;gap:14px;color:#e2e8f0;font-size:13px;line-height:1.55}
+.game-footer #feedback{display:block;flex:1;min-width:0}
+.game-footer .feedback.error{color:#fecaca;font-weight:800}
+.game-footer .feedback.success{color:#bbf7d0;font-weight:800}
+.prompt-row{order:2}
+.game-header{order:1}
+.drawing-area{order:4;flex:1 0 470px}
+.canvas-hint{order:5}
+@media(max-width:700px){
+ .game-footer{order:3;min-height:0;flex-direction:column;align-items:stretch;gap:10px;margin-bottom:10px;padding:13px 14px;font-size:13px}
+ .game-footer .next-button{align-self:stretch}
+ .drawing-area{order:4;flex:0 0 570px}
+}
+
+/* Las letras incorrectas no muestran mensajes que confundan al jugador. */
+.feedback.silent { display: none !important; }
